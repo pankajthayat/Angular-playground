@@ -1,10 +1,24 @@
 <div class="container">
-
+<app-cockpit
+(serverAdded) ="onServerAdded($event)"
+(blueprintAdded) = "onBluePrintAdded($event)"
+></app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
-    
+<app-server-element
+  *ngFor = "let serverElement of serverElements"
+  [srvElement] = "serverElement"
+>
+  <input #testing type = "text">
+  <button (click)="onTest(testingBack)" >Test</button>
+  <p>
+
+    <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+    <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+  </p>
+
+</app-server-element>
       </div>
     </div>
   </div>
-</div>
